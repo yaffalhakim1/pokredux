@@ -8,9 +8,19 @@ import {
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
-import DetailPokemon from "./detail/[id]";
+import DetailPokemon from "./[id]";
 
-export default function Pokemon({ pokemon }: { pokemon: any }) {
+interface pokebox {
+  name?: any;
+  id?: any;
+  image?: string;
+  abilities?: any;
+  types?: any;
+  stats?: any;
+  moves?: any;
+}
+
+export default function Pokemon(props: pokebox) {
   const [filter, setFilter] = useState("");
 
   const dispatch = useDispatch<AppDispatch>();
@@ -34,13 +44,11 @@ export default function Pokemon({ pokemon }: { pokemon: any }) {
   } else if (pokemonStatus === "succeeded") {
     pokedex = pokemons.map((pokemon: any) => (
       <div key={pokemon.id}>
-        <Link href={`/pokemon/detail/${pokemon.id}`}>
-          <Pokebox
-            name={pokemon.name}
-            id={pokemon.id}
-            image={pokemon.sprites.front_default}
-          />
-        </Link>
+        <Pokebox
+          name={pokemon.name}
+          id={pokemon.id}
+          image={pokemon.sprites.front_default}
+        />
       </div>
     ));
   } else if (pokemonStatus === "failed") {
@@ -50,8 +58,7 @@ export default function Pokemon({ pokemon }: { pokemon: any }) {
   return (
     <>
       <h1 className="text-center text-2xl mt-5 mb-5">Pokemon</h1>
-
-      <div className="mx-[80px] grid grid-cols-2 md:grid-cols-3 gap-4">
+      <div className="md:mx-[80px] grid grid-cols-2 md:grid-cols-3 gap-4">
         {pokedex}
       </div>
     </>
