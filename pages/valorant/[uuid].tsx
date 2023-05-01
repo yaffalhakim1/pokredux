@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useState, Fragment, useEffect } from "react";
 import { Dialog, Transition } from "@headlessui/react";
-import { selectValorantByUuid } from "@/redux/store/valorant/valorantSlice";
+import { selectValorantByUuid } from "@/redux/store/valorants/valorantSlice";
 import { useSelector } from "react-redux";
 import { GetServerSideProps } from "next";
 import axios from "axios";
@@ -27,6 +27,7 @@ export const getServerSideProps: GetServerSideProps<{
 
 export default function DetailValorant({ data }: DetailProps) {
   const valorantId = data.uuid;
+  console.log(data);
   const valorant = useSelector((state: any) =>
     selectValorantByUuid(state, valorantId)
   ) as any;
@@ -82,50 +83,59 @@ export default function DetailValorant({ data }: DetailProps) {
                     as="h3"
                     className="text-xl font-semibold leading-6 text-gray-900"
                   >
-                    {/* <div className="flex">
-                      <img src={pokemon.sprites?.front_shiny} alt="" />
-                      <img src={pokemon.sprites?.front_default} alt="" />
-                    </div> */}
+                    <div>
+                      <img
+                        src={valorant.displayIconSmall}
+                        className="h-12 w-12"
+                        alt=""
+                      />
+                    </div>
 
-                    {/* {valorant.map((item: any) => (
-                      <div key={item.uuid}>
-                        <li className="text-sm text-gray-800">
-                          {item.displayName}
-                        </li>
-
-                        <img src={item.displayIcon} alt="" />
-                      </div>
-                    ))} */}
+                    <div className="flex-col">
+                      {valorant.displayName}
+                      {valorant.role ? (
+                        <span className="bg-blue-100 text-blue-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-blue-900 dark:text-blue-300 ml-2">
+                          {valorant.role.displayName}
+                        </span>
+                      ) : (
+                        <span className="text-sm text-gray-500">
+                          No role found.
+                        </span>
+                      )}
+                    </div>
                   </Dialog.Title>
                   <div className="mt-2">
                     <p className="text-md text-gray-700 font-medium">
                       Description
                     </p>
-                    {/* {valorant.abilities ? (
-                      pokemon.abilities.map((ability: any) => (
-                        <div key={ability.ability.name}>
-                          <li className="text-sm text-gray-800">
-                            {ability.ability.name}
-                          </li>
-                        </div>
-                      ))
+                    {valorant.description ? (
+                      valorant.description
                     ) : (
                       <p>No abilities found.</p>
-                    )} */}
+                    )}
                   </div>
                   <div className="mt-2">
-                    <p className="text-md text-gray-700 font-medium">Skills</p>
-                    {/* {pokemon.moves ? (
-                      pokemon.moves.slice(0, 5).map((move: any) => (
-                        <div key={move.move.name}>
-                          <li className="text-sm text-gray-800">
-                            {move.move.name}
-                          </li>
-                        </div>
-                      ))
-                    ) : (
-                      <p>No moves found.</p>
-                    )} */}
+                    <p className="text-md text-gray-700 font-medium mb-4">
+                      Skills
+                    </p>
+                    <div className="grid grid-cols-4 gap-3">
+                      {valorant.abilities ? (
+                        valorant.abilities.map((ability: any) => (
+                          <div key={ability.uuid}>
+                            <div className="bg-blue-500 rounded-full h-20 w-20  flex items-center justify-center mb-2">
+                              <img
+                                src={ability.displayIcon}
+                                alt=""
+                                className="h-12 w-12"
+                              />
+                            </div>
+                            <p className="">{ability.displayName}</p>
+                          </div>
+                        ))
+                      ) : (
+                        <p>No abilities found.</p>
+                      )}
+                    </div>
                   </div>
 
                   <div className="mt-4">

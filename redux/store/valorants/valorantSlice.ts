@@ -1,3 +1,4 @@
+import { ValorantData } from "@/types/valorantTypes";
 import {
   createAsyncThunk,
   createEntityAdapter,
@@ -5,7 +6,9 @@ import {
 } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const valorantAdapter = createEntityAdapter();
+const valorantAdapter = createEntityAdapter({
+  selectId: (valorant: ValorantData) => valorant.uuid as string,
+});
 
 const initialState = valorantAdapter.getInitialState({
   status: "idle",

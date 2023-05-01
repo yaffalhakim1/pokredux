@@ -12,10 +12,6 @@ interface pokebox {
   name?: any;
   id?: any;
   image?: string;
-  abilities?: any;
-  types?: any;
-  stats?: any;
-  moves?: any;
 }
 
 export default function Pokemon(props: pokebox) {

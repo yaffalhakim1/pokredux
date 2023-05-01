@@ -4,7 +4,7 @@ import { AppDispatch } from "@/redux/store";
 import {
   fetchValorants,
   selectAllValorants,
-} from "@/redux/store/valorant/valorantSlice";
+} from "@/redux/store/valorants/valorantSlice";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -12,6 +12,7 @@ interface valobox {
   displayName?: any;
   uuid?: any;
   displayIcon?: string;
+  displayIconSmall?: string;
 }
 
 export default function Valorant(props: valobox) {
@@ -41,7 +42,7 @@ export default function Valorant(props: valobox) {
         <Valobox
           displayName={v.displayName}
           uuid={v.uuid}
-          displayIcon={v.displayIcon}
+          displayIconSmall={v.displayIconSmall}
         />
       </div>
     ));
