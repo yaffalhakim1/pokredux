@@ -1,44 +1,36 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useState, Fragment, useEffect } from "react";
 import { Dialog, Transition } from "@headlessui/react";
-import { selectPokemonById } from "@/redux/store/pokemons/pokemonSlice";
+import { selectValorantByUuid } from "@/redux/store/valorant/valorantSlice";
 import { useSelector } from "react-redux";
-import { useRouter } from "next/router";
 import { GetServerSideProps } from "next";
 import axios from "axios";
-
-interface Pokemon {
-  name?: string | any;
-  abilities?: { ability: { name: string } }[] | any;
-  types?: { type: { name: string } }[];
-  stats?: { base_stat: number; stat: { name: string } }[];
-  moves?: { move: { name: string } }[];
-  sprites?: { front_default: string; front_shiny: string };
-  id?: any;
-}
+import { ValorantData } from "@/types/valorantTypes";
 
 interface DetailProps {
-  data: Pokemon;
+  data: ValorantData;
 }
 
-export const getServerSideProps: GetServerSideProps<{ data: Pokemon }> = async (
-  context
-) => {
-  const id = context.query.id as any;
-  const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`);
+export const getServerSideProps: GetServerSideProps<{
+  data: ValorantData;
+}> = async (context) => {
+  const agentUuid = context.query.uuid! as any;
+  const response =
+    await axios.get(`https://valorant-api.com/v1/agents/${agentUuid}
+  `);
   return {
     props: {
-      data: response.data,
+      data: response.data.data,
     },
   };
 };
 
-export default function DetailPokemon({ data }: DetailProps) {
-  const pokemonId = data.id;
-  const pokemon = useSelector((state: any) =>
-    selectPokemonById(state, pokemonId)
+export default function DetailValorant({ data }: DetailProps) {
+  const valorantId = data.uuid;
+  const valorant = useSelector((state: any) =>
+    selectValorantByUuid(state, valorantId)
   ) as any;
-  // console.log(pokemon);
+  console.log(valorant, "valorant");
 
   let [isOpen, setIsOpen] = useState(false);
 
@@ -49,8 +41,6 @@ export default function DetailPokemon({ data }: DetailProps) {
   function openModal() {
     setIsOpen(true);
   }
-
-  const [isLoading, setIsLoading] = useState(true);
 
   return (
     <>
@@ -92,18 +82,26 @@ export default function DetailPokemon({ data }: DetailProps) {
                     as="h3"
                     className="text-xl font-semibold leading-6 text-gray-900"
                   >
-                    <div className="flex">
+                    {/* <div className="flex">
                       <img src={pokemon.sprites?.front_shiny} alt="" />
                       <img src={pokemon.sprites?.front_default} alt="" />
-                    </div>
-                    {pokemon!.name!.charAt(0).toUpperCase() +
-                      pokemon!.name!.slice(1)}
+                    </div> */}
+
+                    {/* {valorant.map((item: any) => (
+                      <div key={item.uuid}>
+                        <li className="text-sm text-gray-800">
+                          {item.displayName}
+                        </li>
+
+                        <img src={item.displayIcon} alt="" />
+                      </div>
+                    ))} */}
                   </Dialog.Title>
                   <div className="mt-2">
                     <p className="text-md text-gray-700 font-medium">
-                      Abilities
+                      Description
                     </p>
-                    {pokemon.abilities ? (
+                    {/* {valorant.abilities ? (
                       pokemon.abilities.map((ability: any) => (
                         <div key={ability.ability.name}>
                           <li className="text-sm text-gray-800">
@@ -113,11 +111,11 @@ export default function DetailPokemon({ data }: DetailProps) {
                       ))
                     ) : (
                       <p>No abilities found.</p>
-                    )}
+                    )} */}
                   </div>
                   <div className="mt-2">
-                    <p className="text-md text-gray-700 font-medium">Moves</p>
-                    {pokemon.moves ? (
+                    <p className="text-md text-gray-700 font-medium">Skills</p>
+                    {/* {pokemon.moves ? (
                       pokemon.moves.slice(0, 5).map((move: any) => (
                         <div key={move.move.name}>
                           <li className="text-sm text-gray-800">
@@ -127,7 +125,7 @@ export default function DetailPokemon({ data }: DetailProps) {
                       ))
                     ) : (
                       <p>No moves found.</p>
-                    )}
+                    )} */}
                   </div>
 
                   <div className="mt-4">

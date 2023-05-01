@@ -3,14 +3,15 @@ import {
   createEntityAdapter,
   createSlice,
 } from "@reduxjs/toolkit";
-
 import axios from "axios";
+
+// const pokemonApi = `https://pokeapi.co/api/v2/pokemon/?offset=0&limit=20`
 
 const pokemonsAdapter = createEntityAdapter();
 
 const initialState = pokemonsAdapter.getInitialState({
   status: "idle",
-  error: null as any,
+  error: "" as any,
 });
 
 export const fetchPokemons = createAsyncThunk(
@@ -56,4 +57,4 @@ export const {
   selectAll: selectAllPokemons,
   selectById: selectPokemonById,
   selectIds: selectPokemonIds,
-} = pokemonsAdapter.getSelectors((state: any) => state.pokemons);
+} = pokemonsAdapter.getSelectors((state: any) => state.pokemons) as any;

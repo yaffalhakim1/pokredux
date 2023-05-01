@@ -14,7 +14,9 @@ export default function Home() {
           <Link href="pokemon/">
             <Button text="Pokemon" color={"yellow"} />
           </Link>
-          <Button text="Valorant" color={"red"} />
+          <Link href="valorant/">
+            <Button text="Valorant" color={"red"} />
+          </Link>
         </div>
       </div>
     </div>

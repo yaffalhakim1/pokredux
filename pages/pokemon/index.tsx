@@ -5,10 +5,8 @@ import {
   fetchPokemons,
   selectAllPokemons,
 } from "@/redux/store/pokemons/pokemonSlice";
-import { useEffect, useState } from "react";
-import Link from "next/link";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import DetailPokemon from "./[id]";
 
 interface pokebox {
   name?: any;
@@ -21,10 +19,8 @@ interface pokebox {
 }
 
 export default function Pokemon(props: pokebox) {
-  const [filter, setFilter] = useState("");
-
   const dispatch = useDispatch<AppDispatch>();
-  const pokemons = useSelector(selectAllPokemons);
+  const pokemons = useSelector(selectAllPokemons) as any;
   const pokemonStatus = useSelector((state: any) => state.pokemons.status);
   const error = useSelector((state: any) => state.pokemons.error);
 
@@ -54,11 +50,10 @@ export default function Pokemon(props: pokebox) {
   } else if (pokemonStatus === "failed") {
     pokedex = <div>{error}</div>;
   }
-
   return (
     <>
       <h1 className="text-center text-2xl mt-5 mb-5">Pokemon</h1>
-      <div className="md:mx-[80px] grid grid-cols-2 md:grid-cols-3 gap-4">
+      <div className="md:mx-[80px] mx-5 grid grid-cols-2 md:grid-cols-3 gap-4">
         {pokedex}
       </div>
     </>
