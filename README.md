@@ -1,38 +1,38 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Valorant and PokeAPI Web App
+Welcome to my web app on GitHub! This is a web app that uses the Valorant API and PokeAPI to display data from these two popular APIs. The web app is built with React, Redux, Axios, and Tailwind CSS.
 
-## Getting Started
+## About the App
+This web app is built with React, a popular JavaScript library for building user interfaces. The app uses Redux for state management, Axios for making HTTP requests, and Tailwind CSS for styling the UI.
 
-First, run the development server:
+The app has two sections:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+Valorant Section: This section displays data from the Valorant API, including the latest news, current rotations, and current season rankings.
+Pokemon Section: This section displays data from the PokeAPI, including information on various Pokemon and their types, abilities, and stats.
+Getting Started
+To run this web app on your local machine, you need to have Node.js installed. Once you have Node.js installed, you can follow these steps:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Clone this repository.
+* Navigate to the root directory of the project in your terminal.
+* Run `pnpm install` to install the dependencies.
+* Run `pnpm dev` to start the development server.
+* Open your browser and navigate to http://localhost:3000.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+## Technologies Used
+Here are the main technologies used in this web app:
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+* NextJS 13: A React Framework
+* Redux: A state management library for React.
+* Axios: A library for making HTTP requests.
+* Tailwind CSS: A utility-first CSS framework for styling the UI.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## APIs Used
+Here are the APIs used in this web app:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+* Valorant API: An API for getting data related to the popular game Valorant.
+* PokeAPI: An API for getting data related to the popular game and franchise Pokemon.
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
