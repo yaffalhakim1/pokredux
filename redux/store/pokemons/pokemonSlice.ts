@@ -11,7 +11,7 @@ const pokemonsAdapter = createEntityAdapter();
 
 const initialState = pokemonsAdapter.getInitialState({
   status: "idle",
-  error: "" as any,
+  error: "",
 });
 
 export const fetchPokemons = createAsyncThunk(
@@ -46,7 +46,7 @@ const pokemonsSlice = createSlice({
       })
       .addCase(fetchPokemons.rejected, (state, action) => {
         state.status = "failed";
-        state.error = action.error.message;
+        state.error = action.error.message!;
       });
   },
 });

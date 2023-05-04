@@ -17,6 +17,9 @@ export default function Home() {
           <Link href="valorant/">
             <Button text="Valorant" color={"red"} />
           </Link>
+          {/* <Link href="pt/">
+            <Button text="Perguruan Tinggi" color={"blue"} />
+          </Link> */}
         </div>
       </div>
     </div>

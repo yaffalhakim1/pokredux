@@ -19,6 +19,7 @@ specifiers:
   redux-thunk: ^2.4.2
   tailwindcss: 3.3.1
   typescript: 5.0.4
+  zod: ^3.21.4
 
 dependencies:
   '@headlessui/react': 1.7.14_biqbaboplfbrettd7655fr4n2y
@@ -39,6 +40,7 @@ dependencies:
   redux-thunk: 2.4.2
   tailwindcss: 3.3.1_postcss@8.4.23
   typescript: 5.0.4
+  zod: 3.21.4
 
 packages:
 
@@ -2741,4 +2743,8 @@ packages:
   /yocto-queue/0.1.0:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
+    dev: false
+
+  /zod/3.21.4:
+    resolution: {integrity: sha512-m46AKbrzKVzOzs/DZgVnG5H55N1sv1M8qZU3A8RIKbs3mrACDNeIOeilDymVb2HdmP8uwshOCF4uJ8uM9rCqJw==}
     dev: false

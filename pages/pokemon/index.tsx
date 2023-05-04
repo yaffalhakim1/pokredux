@@ -1,5 +1,5 @@
 import { LoadingIcon } from "@/components/icons";
-import Pokebox from "@/components/pokebox";
+import { Pokebox } from "@/components/box";
 import { AppDispatch } from "@/redux/store";
 import {
   fetchPokemons,

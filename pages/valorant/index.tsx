@@ -31,12 +31,11 @@ export default function Valorant(props: valobox) {
 
   if (valorantStatus === "loading") {
     valoagents = (
-      <div className="text-center flex items-center justify-center h-screen">
+      <div className="\ flex items-center justify-center">
         <LoadingIcon />
       </div>
     );
   } else if (valorantStatus === "succeeded") {
-    console.log(valorants, "valorants");
     valoagents = valorants.map((v: any) => (
       <div key={v.uuid}>
         <Valobox

@@ -38,7 +38,6 @@ export default function DetailPokemon({ data }: DetailProps) {
   const pokemon = useSelector((state: any) =>
     selectPokemonById(state, pokemonId)
   ) as any;
-  // console.log(pokemon);
 
   let [isOpen, setIsOpen] = useState(false);
 

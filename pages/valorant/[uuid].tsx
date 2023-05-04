@@ -27,11 +27,9 @@ export const getServerSideProps: GetServerSideProps<{
 
 export default function DetailValorant({ data }: DetailProps) {
   const valorantId = data.uuid;
-  console.log(data);
   const valorant = useSelector((state: any) =>
     selectValorantByUuid(state, valorantId)
   ) as any;
-  console.log(valorant, "valorant");
 
   let [isOpen, setIsOpen] = useState(false);
 

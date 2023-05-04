@@ -1,4 +1,5 @@
-import { ValorantData } from "@/types/valorantTypes";
+import { valorantSchema, ValorantData } from "@/types/valorantTypes";
+import { z } from "zod";
 import {
   createAsyncThunk,
   createEntityAdapter,
@@ -7,7 +8,7 @@ import {
 import axios from "axios";
 
 const valorantAdapter = createEntityAdapter({
-  selectId: (valorant: ValorantData) => valorant.uuid as string,
+  selectId: (valorant: ValorantData) => valorant.uuid!,
 });
 
 const initialState = valorantAdapter.getInitialState({
