@@ -1,5 +1,5 @@
 import { LoadingIcon } from "@/components/icons";
-import Valobox from "@/components/valobox";
+import { Valobox } from "@/components/box";
 import { AppDispatch } from "@/redux/store";
 import {
   fetchValorants,
